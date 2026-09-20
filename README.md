@@ -20,6 +20,9 @@
 > [!NOTE]
 > This project is a revamped version of [the original 2024 highlight repo by AutumnVN](https://github.com/AutumnVN/highlight).
 
+> [!WARNING]
+> This project is in a very early development state. A lot of features are still unstable, and parts of the project remain outdated from the original repo.
+
 |         Before          |         After         |
 | :---------------------: | :-------------------: |
 | ![Before](./before.png) | ![After](./after.png) |

@@ -3,9 +3,7 @@
 </p>
 
 <p align="center">
-  <small>
-    Highlight (icon) by <a href="https://thenounproject.com/browse/icons/term/highlight/" target="_blank" title="highlight Icons">creacuatro</a> from <a href="https://thenounproject.com/browse/icons/term/highlight/" target="_blank" title="highlight Icons">Noun Project</a> (CC BY 3.0)
-  </small>
+  <sub>Highlight (icon) by <a href="https://thenounproject.com/browse/icons/term/highlight/" target="_blank" title="highlight Icons">creacuatro</a> from <a href="https://thenounproject.com/browse/icons/term/highlight/" target="_blank" title="highlight Icons">Noun Project</a> (CC BY 3.0)</sub>
 </p>
 
 <h1 align="center">highlight</h1>

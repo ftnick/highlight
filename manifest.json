@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "highlight",
+  "version": "1.0.1",
+  "description": "Beautify and highlight raw source code in the browser with syntax-aware styling.",
+  "author": "ftnick, AutumnVN",
+  "homepage_url": "https://github.com/ftnick/highlight",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "beautify/html.js",
+        "beautify/css.js",
+        "beautify/js.js",
+        "content.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "icons": {
+    "16": "icon.png",
+    "32": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_title": "highlight",
+    "default_icon": {
+      "16": "icon.png",
+      "32": "icon.png",
+      "48": "icon.png",
+      "128": "icon.png"
+    }
+  }
+}

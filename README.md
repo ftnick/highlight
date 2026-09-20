@@ -15,19 +15,15 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ftnick/highlight/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/ftnick/highlight" alt="License">
-  </a>
-  <a href="https://github.com/ftnick/highlight/commits/main">
-    <img src="https://img.shields.io/github/last-commit/ftnick/highlight" alt="Last commit">
-  </a>
+  <a href="https://github.com/ftnick/highlight/blob/main/LICENSE"><img src="https://img.shields.io/github/license/ftnick/highlight" alt="License"></a>
+  <a href="https://github.com/ftnick/highlight/commits/main"><img src="https://img.shields.io/github/last-commit/ftnick/highlight" alt="Last commit"></a>
 </p>
 
 > [!NOTE]
 > This project is a revamped version of [the original 2024 highlight repo by AutumnVN](https://github.com/AutumnVN/highlight).
 
-| Before | After |
-| :---: | :---: |
+|         Before          |         After         |
+| :---------------------: | :-------------------: |
 | ![Before](./before.png) | ![After](./after.png) |
 
 ## Installation

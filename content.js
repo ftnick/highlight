@@ -1,13 +1,18 @@
+const contentType = document.contentType || "";
+const body = document.body;
+const firstChild = body?.firstChild;
+
 if (
-  document.contentType !== "text/html" &&
-  (document.contentType.startsWith("text/") ||
-    document.contentType.startsWith("application/")) &&
-  document.body.firstChild.tagName === "PRE"
+  contentType !== "text/html" &&
+  (contentType.startsWith("text/") || contentType.startsWith("application/")) &&
+  firstChild &&
+  firstChild.nodeType === Node.ELEMENT_NODE &&
+  firstChild.tagName === "PRE"
 ) {
-  let code = document.body.firstChild.textContent;
+  let code = firstChild.textContent;
   let ext = location.pathname.split(".").pop().toLowerCase();
   if (ext.length > 9 || !/^\w+$/.test(ext))
-    ext = document.contentType.split("/").pop().toLowerCase();
+    ext = contentType.split("/").pop().toLowerCase();
 
   if (["cjs", "mjs"].includes(ext)) ext = "js";
   if (["cts", "mts"].includes(ext)) ext = "ts";

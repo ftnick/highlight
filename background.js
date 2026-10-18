@@ -21,15 +21,29 @@ function resolveSupportedLanguage(api, rawLang) {
   return match?.id || null;
 }
 
-try {
-  importScripts(chrome.runtime.getURL("shiki/shiki.js"));
-  logDebug(
-    "Shiki loaded",
-    !!globalThis.shiki && typeof globalThis.shiki.getHighlighter === "function",
-  );
-} catch (error) {
-  logDebug("Shiki import failed", error?.message || error);
+function ensureShikiLoaded() {
+  if (
+    globalThis.shiki &&
+    typeof globalThis.shiki.getHighlighter === "function"
+  ) {
+    return true;
+  }
+
+  try {
+    importScripts(chrome.runtime.getURL("shiki/shiki.js"));
+  } catch (error) {
+    logDebug("Shiki import failed", error?.message || error);
+    return false;
+  }
+
+  const loaded =
+    !!globalThis.shiki && typeof globalThis.shiki.getHighlighter === "function";
+
+  logDebug("Shiki load attempt", loaded ? "ready" : "unavailable");
+  return loaded;
 }
+
+ensureShikiLoaded();
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (!message || message.type !== "highlight") {
@@ -38,11 +52,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   (async () => {
     try {
-      const api = globalThis.shiki;
-      if (!api || typeof api.getHighlighter !== "function") {
-        throw new Error("Shiki unavailable in background worker");
+      if (!ensureShikiLoaded()) {
+        sendResponse(null);
+        return;
       }
 
+      const api = globalThis.shiki;
       const highlighter = await api.getHighlighter({
         theme: "dark-plus",
         langs: [],

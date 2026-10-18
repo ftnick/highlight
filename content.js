@@ -1,15 +1,17 @@
 const contentType = document.contentType || "";
 const body = document.body;
-const firstChild = body?.firstChild;
+const candidate = body
+  ? body.querySelector("pre, code, textarea, xmp, samp") || body.firstChild
+  : null;
 
 if (
   contentType !== "text/html" &&
   (contentType.startsWith("text/") || contentType.startsWith("application/")) &&
-  firstChild &&
-  firstChild.nodeType === Node.ELEMENT_NODE &&
-  firstChild.tagName === "PRE"
+  candidate &&
+  candidate.nodeType === Node.ELEMENT_NODE &&
+  ["PRE", "CODE", "TEXTAREA", "XMP", "SAMP"].includes(candidate.tagName)
 ) {
-  let code = firstChild.textContent;
+  let code = candidate.textContent || "";
   let ext = location.pathname.split(".").pop().toLowerCase();
   if (ext.length > 9 || !/^\w+$/.test(ext))
     ext = contentType.split("/").pop().toLowerCase();
